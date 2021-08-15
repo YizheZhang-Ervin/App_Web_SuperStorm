@@ -27,7 +27,7 @@
   - @RequestMapping(value,method,params)
 - 参数绑定
   - @RequestParam
-- 请求转发/重定向(未)
+- 请求转发/重定向
   - 请求域
     - ModelAndView / HttpServletRequest / Model / ModelMap / Map
   - 请求转发 forward
@@ -35,10 +35,10 @@
 - JSON数据
   - @ResponseBody
   - @RequestBody
-- 拦截器(未)
+- 拦截器
   - 实现HandlerInterceptor
   - 继承HandlerInterceptorAdapter
-- 文件上传(未)
+- 文件上传
   - common-fileuplaod
 - RESTful 
   - @GetMapping
@@ -76,7 +76,7 @@
   - 配置application.properties
   - 配置application-{profile}.properties
   - 日志
-- 视图集成 (未)
+- 视图集成
   - Freemarker
   - Thymeleaf
 - 静态资源访问

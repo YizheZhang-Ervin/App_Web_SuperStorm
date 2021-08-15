@@ -18,7 +18,16 @@ spring:
       quiet-period: 1000
   web:
     resources:
-      static-locations: classpath:/static/
+      static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,classpath:/templates/
+  thymeleaf:
+    prefix: classpath:/templates/
+    cache: false
+
+  servlet:
+    multipart:
+      max-request-size: 10MB  # 上传文件总的最大值
+      max-file-size: 10MB  # 单个文件的最大值
+
 mybatis:
   mapper-locations: classpath:mapping/*Mapper.xml
   type-aliases-package: com.ervin.po

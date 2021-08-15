@@ -16,7 +16,7 @@ import java.util.Map;
 
 @Api(tags="manage user")
 @RestController
-//@RequestMapping("/testBoot")
+//@RequestMapping("/test")
 public class UserController {
 
     @Resource
@@ -78,10 +78,5 @@ public class UserController {
     @ApiImplicitParam(name="userQuery",value="user query")
     public PageInfo<User> queryUserByParams(UserQuery userQuery){
         return userService.queryUserByParams(userQuery);
-    }
-
-    @GetMapping("/hello")
-    public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
-        return String.format("Hello %s!", name);
     }
 }
