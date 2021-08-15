@@ -11,7 +11,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel target="8">
       <module name="demo" target="1.8" />
-      <module name="TMPL_Spring" target="" />
+      <module name="TMPL_SpringBoot" target="" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
