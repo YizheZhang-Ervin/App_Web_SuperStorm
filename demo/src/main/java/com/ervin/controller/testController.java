@@ -1,6 +1,7 @@
 package com.ervin.controller;
 
 import io.swagger.annotations.Api;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -12,13 +13,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 @Api(tags="TEST URL")
 @Controller
 public class testController {
 
-    @GetMapping("/hello")
+    @RequestMapping(value="/hello",params={"name!=user","passord"},headers={"Accept-Encoding=gzip,deflate"},method={RequestMethod.GET,RequestMethod.POST})
     @ResponseBody
     public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
         return String.format("Hello %s!", name);
@@ -105,5 +108,22 @@ public class testController {
             System.out.println(e.toString());
         }
         return "上传失败！";
+    }
+
+    // 方法1: 接收日期类型
+    // 方法2: 实现Converter
+    @RequestMapping("/date")
+    @ResponseBody
+    public String getDate(@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss") Date birthdate){
+        return "success";
+    }
+
+    // 集合传值
+    @RequestMapping("/collection")
+    @ResponseBody
+    public String getCollection(List<Integer> list){
+        // 前端可input写 name=list[0]
+        System.out.println(list);
+        return "success";
     }
 }

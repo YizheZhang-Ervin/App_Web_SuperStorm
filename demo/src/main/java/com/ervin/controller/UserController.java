@@ -54,6 +54,7 @@ public class UserController {
     @PutMapping("user")
     @ApiOperation(value="update user")
     @ApiImplicitParam(name="user",value="user")
+    // 不推荐使用@RequestParam接收application/json，这时候就需要使用到@RequestBody。
     public Map<String,Object> updateUser(@RequestBody User user){
         userService.updateUser(user);
         Map<String,Object> map = new HashMap<>();

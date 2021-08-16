@@ -9,6 +9,8 @@ import java.io.Serializable;
 
 @ApiModel(value="user entity class")
 public class User implements Serializable {
+    // POJO（Plain Ordinary Java Object）简单的Java对象，实际就是普通JavaBeans，是为了避免和EJB混淆所创造的简称
+    // POJO会反射调用set方法，所以必须要有set方法
     @ApiModelProperty(value="user id",example="0")
     private Integer userId;
 
