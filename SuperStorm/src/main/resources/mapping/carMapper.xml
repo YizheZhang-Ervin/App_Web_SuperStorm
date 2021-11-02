@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ervin.SuperStorm.dao.CarSqlDao">
+
+    <resultMap id="BaseResultMap" type="com.ervin.SuperStorm.po.Car">
+        <result column="userId" jdbcType="INTEGER" property="userId" />
+        <result column="userName" jdbcType="VARCHAR" property="userName" />
+    </resultMap>
+
+    <select id="getOneCar" resultType="com.ervin.SuperStorm.po.Car">
+        select *
+        from data0124
+        where carId = #{carId}
+    </select>
+
+    <select id="getAllCar" resultType="com.ervin.SuperStorm.po.Car">
+        select *
+        from data0124
+    </select>
+
+    <insert id="createCar" parameterType="com.ervin.SuperStorm.po.Car">
+        insert into data0124 (frameNUM, carId,xCen,yCen,xHead,yHead,xTail,yTail,velocity,accelerate,carL)
+        values (#{frameNUM,jdbcType=INTEGER}, #{carId,jdbcType=INTEGER}, #{xCen,jdbcType=VARCHAR}
+               , #{yCen,jdbcType=VARCHAR}, #{xHead,jdbcType=VARCHAR}, #{yHead,jdbcType=VARCHAR}
+               , #{xTail,jdbcType=VARCHAR}, #{yTail,jdbcType=VARCHAR}, #{velocity,jdbcType=VARCHAR}
+               , #{accelerate,jdbcType=VARCHAR}, #{carL,jdbcType=VARCHAR})
+    </insert>
+
+    <update id="updateCar" parameterType="com.ervin.SuperStorm.po.Car">
+        update data0124
+        set frameNUM = #{frameNUM}
+        where carId = #{carId}
+    </update>
+
+    <delete id="deleteCar">
+        delete from data0124
+        where carId = #{carId}
+    </delete>
+
+</mapper>
