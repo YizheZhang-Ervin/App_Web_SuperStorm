@@ -15,22 +15,31 @@ public class CarSqlController {
     @Resource
     private CarSqlService carSqlService;
 
-    @GetMapping("car/{carId}")
+    // 搜索所有车
+    @GetMapping("car")
+    public Map<String,Object> getAllCar(@RequestParam(value="current", required=false, defaultValue = "1") Integer current,
+                                     @RequestParam(value="pageSize", required=false, defaultValue = "10") Integer pageSize){
+        Map<String,Object> map = new HashMap();
+        map.put("code",200);
+        map.put("msg","succeed");
+        PageInfo<Car> carPageInfo;
+        // 分页查全部车
+        carPageInfo = carSqlService.getAllCar(current,pageSize);
+        map.put("data",carPageInfo);
+        return map;
+    }
+
+    // 搜索特定车
+    @GetMapping("car/{carId:\\d+}")
     public Map<String,Object> getCar(@PathVariable Integer carId,
                                      @RequestParam(value="current", required=false, defaultValue = "1") Integer current,
                                      @RequestParam(value="pageSize", required=false, defaultValue = "10") Integer pageSize){
         Map<String,Object> map = new HashMap();
         map.put("code",200);
         map.put("msg","succeed");
-
         PageInfo<Car> carPageInfo;
-        if(carId!=null){
-            // 分页查一辆车
-            carPageInfo = carSqlService.getOneCar(carId,current,pageSize);
-        } else {
-            // 分页查全部车
-            carPageInfo = carSqlService.getAllCar(current,pageSize);
-        }
+        // 分页查一辆车
+        carPageInfo = carSqlService.getOneCar(carId,current,pageSize);
         map.put("data",carPageInfo);
         return map;
     }
