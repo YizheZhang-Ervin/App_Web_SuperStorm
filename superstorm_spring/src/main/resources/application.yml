@@ -4,7 +4,7 @@ spring:
   # Mysql
   datasource:
     name: druidDataSource
-    url: jdbc:mysql://localhost:3306/car_data
+    url: jdbc:mysql://localhost:3306/test
     username: root
     password: root001
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -36,6 +36,11 @@ spring:
       name: root
       password: root001
       roles: admin
+  # Actuator admin
+  boot:
+    admin:
+      client:
+        url: http://localhost:8082
 
 # Mybatis
 mybatis:
@@ -55,6 +60,8 @@ management:
     web:
       exposure:
         include: "*"
+      base-path: /actuator
+    enabled-by-default: true
   endpoint:
     health:
       show-details: always
@@ -68,3 +75,7 @@ logging:
     com:
       ervin:
         SuperStorm: debug
+
+# 服务器
+server:
+  port: 8081

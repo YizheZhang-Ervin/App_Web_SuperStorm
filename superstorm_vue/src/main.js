@@ -5,6 +5,9 @@ import routes from './Router/router.js';
 import ViewUI from 'view-design';
 import 'view-design/dist/styles/iview.css';
 
+var echarts = require('echarts');
+Vue.prototype.$echarts = echarts
+
 Vue.config.productionTip = false
 
 Vue.use(VueRouter);

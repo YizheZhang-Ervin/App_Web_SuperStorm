@@ -19,4 +19,11 @@
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
 	}
+	/* 改menu头字体 */
+	.ivu-menu-vertical .ivu-menu-item-group-title {
+		font-size: 1.2em !important;
+		color: white !important;
+		text-align: center;
+		padding-left: 0 !important;
+	}
 </style>

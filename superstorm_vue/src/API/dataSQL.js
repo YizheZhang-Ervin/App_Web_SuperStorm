@@ -1,46 +1,18 @@
 import axios from 'axios';
 
-export const processData = (condition) => {
+export const getDataByPage = (pageObj) => {
     return axios.request({
         method: "GET",
         url: "/api/car",
-        params: { filter: condition.filter, sort: condition.sort },
+        params: { current: pageObj.current, total: pageObj.total, pageSize: pageObj.pageSize },
         data: ""
     })
 }
 
-export const getData = (carId) => {
+export const getAllData = () => {
     return axios.request({
         method: "GET",
-        url: `/api/car/${carId}`,
-        params: "",
+        url: "/api/allcar",
         data: ""
-    })
-}
-
-export const postData = (obj) => {
-    return axios.request({
-        method: "POST",
-        url: "/api/car",
-        params: {},
-        data: obj
-    })
-}
-
-export const putData = (key, obj) => {
-    return axios.request({
-        method: "PUT",
-        url: "/api/car",
-        params: { key },
-        data: obj
-    })
-}
-
-export const deleteData = (key, obj) => {
-    return axios.request({
-        method: "DELETE",
-        url: "/api/car",
-        params: { key },
-        data: obj
     })
 }
