@@ -11,7 +11,6 @@
 </template>
 
 <script>
-	import { tableStore } from "@/DataStore/table.js"
 	import { getDataByPage } from "@/API/dataSQL";
 	export default {
 		name: 'TablePage',
@@ -19,12 +18,12 @@
 			return {
 				heightTable: parseInt(window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight) * 19 / 20,
 				heightPager: parseInt(window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight) * 1 / 20,
-				table: tableStore,
+				table: { tableCol: this.$store.state.tableStore.tableCol, tableData: this.$store.state.tableStore.tableData },
 				pageInfo: {
-					current: 1,
-					total: 1,
-					pageSize: 30,
-					pageSizeOpts: [30, 60, 90, 120]
+					current: this.$store.state.pageStore.current,
+					total: this.$store.state.pageStore.total,
+					pageSize: this.$store.state.pageStore.pageSize,
+					pageSizeOpts: this.$store.state.pageStore.pageSizeOpts
 				}
 			}
 		},
@@ -35,20 +34,28 @@
 			getData() {
 				// API请求
 				getDataByPage(this.pageInfo).then(rsp => {
-					this.table.tableCol = rsp.columns
-					this.table.tableData = rsp.data
-					// this.$Notice.info({ title: "Succeed!", desc: "Get All Data" })
-					// 存入sessionStorage
-					sessionStorage.setItem("tableData", JSON.stringify(this.table))
+					if (rsp.status === "200" || rsp.status === 200) {
+						this.$store.commit("pageStore/setPageTotal", rsp.data.total)
+						this.pageInfo.total = this.$store.state.pageStore.total
+						// this.$store.commit("tableStore/setTableCol", rsp.col)
+						this.$store.commit("tableStore/setTableData", rsp.data.list)
+						this.table = { tableCol: this.$store.state.tableStore.tableCol, tableData: this.$store.state.tableStore.tableData }
+						// 成功提示
+						this.$Notice.info({ title: "Succeed!", desc: rsp.msg })
+					} else {
+						this.$Notice.error({ title: "Failed!", desc: rsp.msg })
+					}
 				}, () => {
-					this.$Notice.error({ title: "Failed!", desc: "Get All Data" })
+					this.$Notice.error({ title: "Failed!", desc: "Request error" })
 				})
 			},
 			pageChangeListener(current) {
+				this.$store.commit("pageStore/setPageCurrent", current)
 				this.pageInfo.current = current
 				this.getData()
 			},
 			pageSizeChangeListener(pageSize) {
+				this.$store.commit("pageStore/setPageSize", pageSize)
 				this.pageInfo.pageSize = pageSize
 				this.getData()
 			}

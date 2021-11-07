@@ -27,7 +27,7 @@ let genMockData = (data, counts) => {
     return rst
 }
 
-export const tableStore = {
+export const exampleTable = {
     tableCol: [
         {
             title: 'id',
@@ -90,13 +90,78 @@ export const tableStore = {
             minWidth: 110
         },
         {
-            title: 'Lane',
-            key: 'Lane',
+            title: 'lane',
+            key: 'lane',
             minWidth: 110
         },
         {
-            title: 'NeighborLane',
-            key: 'NeighborLane',
+            title: 'neighborLane',
+            key: 'neighborLane',
+            minWidth: 170
+        },
+        {
+            title: 'changeDirection',
+            key: 'changeDirection',
+            minWidth: 170
+        },
+        {
+            title: 'density',
+            key: 'density',
+            minWidth: 110
+        },
+        {
+            title: 'occupancyCur',
+            key: 'occupancyCur',
+            minWidth: 170
+        },
+        {
+            title: 'occupancyNeighborCur',
+            key: 'occupancyNeighborCur',
+            minWidth: 230
+        },
+        {
+            title: 'dFront',
+            key: 'dFront',
+            minWidth: 110
+        },
+        {
+            title: 'dBack',
+            key: 'dBack',
+            minWidth: 110
+        },
+        {
+            title: 'vFront',
+            key: 'vFront',
+            minWidth: 110
+        },
+        {
+            title: 'vBack',
+            key: 'vBack',
+            minWidth: 110
+        },
+        {
+            title: 'dFrontN',
+            key: 'dFrontN',
+            minWidth: 110
+        },
+        {
+            title: 'dBackN',
+            key: 'dBackN',
+            minWidth: 110
+        },
+        {
+            title: 'vFrontN',
+            key: 'vFrontN',
+            minWidth: 110
+        },
+        {
+            title: 'vBackN',
+            key: 'vBackN',
+            minWidth: 110
+        },
+        {
+            title: 'relativePos',
+            key: 'relativePos',
             minWidth: 170
         }
     ],

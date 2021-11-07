@@ -10,23 +10,19 @@ import java.util.Map;
 import com.github.pagehelper.PageInfo;
 
 @RestController
-@RequestMapping("api")
+//@RequestMapping("api")
 public class CarSqlController {
     @Resource
     private CarSqlService carSqlService;
 
-    // 搜索所有车
+    // 搜索所有车 {code,msg,page:{current,total,pageSize,pageSizeOpts},table:{col,data}}
     @GetMapping("car")
-    public Map<String,Object> getAllCar(@RequestParam(value="current", required=false, defaultValue = "1") Integer current,
+    public PageInfo<Car> getAllCar(@RequestParam(value="current", required=false, defaultValue = "1") Integer current,
                                      @RequestParam(value="pageSize", required=false, defaultValue = "10") Integer pageSize){
-        Map<String,Object> map = new HashMap();
-        map.put("code",200);
-        map.put("msg","succeed");
         PageInfo<Car> carPageInfo;
         // 分页查全部车
         carPageInfo = carSqlService.getAllCar(current,pageSize);
-        map.put("data",carPageInfo);
-        return map;
+        return carPageInfo;
     }
 
     // 搜索特定车

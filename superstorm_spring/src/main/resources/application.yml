@@ -37,10 +37,10 @@ spring:
       password: root001
       roles: admin
   # Actuator admin
-  boot:
-    admin:
-      client:
-        url: http://localhost:8082
+#  boot:
+#    admin:
+#      client:
+#        url: http://localhost:8082
 
 # Mybatis
 mybatis:

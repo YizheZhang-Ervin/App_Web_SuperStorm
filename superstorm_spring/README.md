@@ -4,9 +4,8 @@
    - 登录认证Spring Security
 2. 监控
    - Prometheus
-   - Actuator
+   - Actuator (HTTP/JMX)
    - Druid
-   - 管理监控JMX
 3. 中间件
    - 数据库Mysql+Mybatis
    - Redis
